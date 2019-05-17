@@ -1,0 +1,149 @@
+*** EVALUATION ***
+PROGRAM "C:\Users\muham\OneDrive\Desktop\Hochschulsachen\Semester4\Computerarchitektur\Labor\CA3_Lab1\CA3_Lab1\lab1a (2_3)\bin\Simulator.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC12
+Memory Model: SMALL
+File Format : ELF\DWARF 2.0
+Linker      : SmartLinker V-5.0.40 Build 10203, Jul 23 2010
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+main.asm.o                              Model: SMALL,         Lang: Assembler
+Delay.asm.o                             Model: SMALL,         Lang: Assembler
+Led.asm.o                               Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xC000 (Entry)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+.init                             80     R     0xC000     0xC04F   ROM_C000
+.data                              1   R/W     0x1000     0x1000   RAM
+.stack                           256   R/W     0x1001     0x1100   RAM
+.vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):          52 (dec:       82)
+READ_WRITE (R/W):      101 (dec:      257)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFFE        0xC000   Entry
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- main.asm.o --
+- PROCEDURES:
+     Entry                                     C000       8       8       0   .init       
+     main                                      C000       0       0       0   .init       
+     L3                                        C008       7       7       0   .init       
+     L0                                        C00F       B      11       0   .init       
+     L1                                        C01A       A      10       0   .init       
+     L5                                        C024       3       3       0   .init       
+     L4                                        C027       7       7       0   .init       
+- VARIABLES:
+     var1                                      1000       1       1       5   .data       
+- LABELS:
+     __SEG_END_SSTACK                          1101       0       0       1               
+MODULE:                 -- Delay.asm.o --
+- PROCEDURES:
+     delay_0_5_sec                             C02E       3       3       1   .init       
+     waitO                                     C031       3       3       0   .init       
+     waitI                                     C034       7       7       0   .init       
+- VARIABLES:
+MODULE:                 -- Led.asm.o --
+- PROCEDURES:
+     initLED                                   C03B       B      11       1   .init       
+     setLED                                    C046       3       3       0   .init       
+     getLED                                    C049       3       3       0   .init       
+     toggleLED                                 C04C       4       4       0   .init       
+- VARIABLES:
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  main.asm.o                                   1     46      0
+  Delay.asm.o                                  0     13      0
+  Led.asm.o                                    0     21      0
+  other                                      256      2      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".data"
+  var1 
+SECTION: ".init"
+  main Entry L3 L0 L1 L5 L4 delay_0_5_sec waitO waitI initLED setLED getLED 
+  toggleLED 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     var1                                      1000       1       1       5   .data       
+     main                                      C000       0       0       0   .init       
+     Entry                                     C000       8       8       0   .init       
+     L3                                        C008       7       7       0   .init       
+     L0                                        C00F       B      11       0   .init       
+     L1                                        C01A       A      10       0   .init       
+     L5                                        C024       3       3       0   .init       
+     L4                                        C027       7       7       0   .init       
+     delay_0_5_sec                             C02E       3       3       1   .init       
+     waitO                                     C031       3       3       0   .init       
+     waitI                                     C034       7       7       0   .init       
+     initLED                                   C03B       B      11       1   .init       
+     setLED                                    C046       3       3       0   .init       
+     getLED                                    C049       3       3       0   .init       
+     toggleLED                                 C04C       4       4       0   .init       
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+Entry                     USES __SEG_END_SSTACK initLED 
+L3                        USES var1 
+L0                        USES var1 delay_0_5_sec 
+L1                        USES var1 
+L5                        USES var1 
+L4                        USES var1 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+ |    
+ +- Entry               
+    | 
+    +- initLED             
+         
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 2
+Total size of all blocks to be downloaded: 82
+

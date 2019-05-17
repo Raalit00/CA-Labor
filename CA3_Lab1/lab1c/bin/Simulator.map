@@ -1,0 +1,159 @@
+*** EVALUATION ***
+PROGRAM "C:\Users\PC\Desktop\Alle Ordner\Uni-skripte\4semester\CA\CA3_Lab1\lab1c\bin\Simulator.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC12
+Memory Model: SMALL
+File Format : ELF\DWARF 2.0
+Linker      : SmartLinker V-5.0.40 Build 10203, Jul 23 2010
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+main.asm.o                              Model: SMALL,         Lang: Assembler
+toLower.asm.o                           Model: SMALL,         Lang: Assembler
+Copy of hexToASCII.asm.o                Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xC000 (Entry)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+.init                            174     R     0xC000     0xC0AD   ROM_C000
+.data                            172   R/W     0x1000     0x10AB   RAM
+.const                            64     R     0xC0AE     0xC0ED   ROM_C000
+.stack                           256   R/W     0x10AC     0x11AB   RAM
+.vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):          F0 (dec:      240)
+READ_WRITE (R/W):      1AC (dec:      428)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFFE        0xC000   Entry
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- main.asm.o --
+- PROCEDURES:
+     Entry                                     C000       E      14       0   .init       
+     main                                      C000       0       0       0   .init       
+     next                                      C00E       E      14       0   .init       
+     loop                                      C01C       2       2       0   .init       
+- VARIABLES:
+     Vtext                                     1000      50      80       2   .data       
+     Ctext                                     C0AE      1E      30       1   .const      
+     hilfC                                     C0CC       2       2       0   .const      
+- LABELS:
+     __SEG_END_SSTACK                          11AC       0       0       1               
+MODULE:                 -- toLower.asm.o --
+- PROCEDURES:
+     toLower                                   C01E       2       2       1   .init       
+     loop                                      C020      10      16       0   .init       
+     next                                      C030       4       4       0   .init       
+     ende                                      C034       1       1       0   .init       
+     strCpy                                    C035       6       6       0   .init       
+     LP                                        C03B       9       9       0   .init       
+- VARIABLES:
+     str                                       1050      50      80       1   .data       
+     Cstr                                      C0CE      10      16       1   .const      
+MODULE:                 -- Copy of hexToASCII.asm.o --
+- PROCEDURES:
+     hexToASCII                                C044      6A     106       1   .init       
+- VARIABLES:
+     var                                       10A0       2       2       4   .data       
+     zahl                                      10A2       5       5       6   .data       
+     zahl2                                     10A7       5       5       0   .data       
+     H2A                                       C0DE      10      16       1   .const      
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  main.asm.o                                  80     30     32
+  toLower.asm.o                               80     38     16
+  Copy of hexToASCII.asm.o                    12    106     16
+  other                                      256      2      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".data"
+  Vtext str var zahl zahl2 
+SECTION: ".init"
+  main Entry next loop toLower loop next ende strCpy LP hexToASCII 
+SECTION: ".const"
+  Ctext hilfC Cstr H2A 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     Vtext                                     1000      50      80       2   .data       
+     str                                       1050      50      80       1   .data       
+     var                                       10A0       2       2       4   .data       
+     zahl                                      10A2       5       5       6   .data       
+     zahl2                                     10A7       5       5       0   .data       
+     main                                      C000       0       0       0   .init       
+     Entry                                     C000       E      14       0   .init       
+     next                                      C00E       E      14       0   .init       
+     loop                                      C01C       2       2       0   .init       
+     toLower                                   C01E       2       2       1   .init       
+     loop                                      C020      10      16       0   .init       
+     next                                      C030       4       4       0   .init       
+     ende                                      C034       1       1       0   .init       
+     strCpy                                    C035       6       6       0   .init       
+     LP                                        C03B       9       9       0   .init       
+     hexToASCII                                C044      6A     106       1   .init       
+     Ctext                                     C0AE      1E      30       1   .const      
+     hilfC                                     C0CC       2       2       0   .const      
+     Cstr                                      C0CE      10      16       1   .const      
+     H2A                                       C0DE      10      16       1   .const      
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+Entry                     USES __SEG_END_SSTACK hexToASCII Ctext Vtext 
+next                      USES Vtext toLower 
+strCpy                    USES Cstr str 
+hexToASCII                USES var zahl H2A 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+ |    
+ +- Entry               
+    | 
+    +- hexToASCII          
+         
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 3
+Total size of all blocks to be downloaded: 240
+

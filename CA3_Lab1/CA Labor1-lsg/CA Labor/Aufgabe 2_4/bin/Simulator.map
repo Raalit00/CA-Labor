@@ -1,0 +1,130 @@
+*** EVALUATION ***
+PROGRAM "C:\Users\PC\Desktop\CA Labor\CA Labor\Aufgabe 2_4\bin\Simulator.abs"
+
+*********************************************************************************************
+TARGET SECTION
+---------------------------------------------------------------------------------------------
+Processor   : Freescale HC12
+Memory Model: SMALL
+File Format : ELF\DWARF 2.0
+Linker      : SmartLinker V-5.0.40 Build 10203, Jul 23 2010
+
+*********************************************************************************************
+FILE SECTION
+---------------------------------------------------------------------------------------------
+main.asm.o                              Model: SMALL,         Lang: Assembler
+toLower.asm.o                           Model: SMALL,         Lang: Assembler
+
+*********************************************************************************************
+STARTUP SECTION
+---------------------------------------------------------------------------------------------
+Entry point: 0xC000 (Entry)
+
+*********************************************************************************************
+SECTION-ALLOCATION SECTION
+Section Name                    Size  Type     From       To       Segment
+---------------------------------------------------------------------------------------------
+.init                             48     R     0xC000     0xC02F   ROM_C000
+.data                             80   R/W     0x1000     0x104F   RAM
+.const                            30     R     0xC030     0xC04D   ROM_C000
+.stack                           256   R/W     0x1050     0x114F   RAM
+.vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
+
+Summary of section sizes per section type:
+READ_ONLY (R):          50 (dec:       80)
+READ_WRITE (R/W):      150 (dec:      336)
+
+*********************************************************************************************
+VECTOR-ALLOCATION SECTION
+    Address     InitValue   InitFunction
+---------------------------------------------------------------------------------------------
+     0xFFFE        0xC000   Entry
+
+*********************************************************************************************
+OBJECT-ALLOCATION SECTION
+     Name               Module                 Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+MODULE:                 -- main.asm.o --
+- PROCEDURES:
+     Entry                                     C000       B      11       0   .init       
+     main                                      C000       0       0       0   .init       
+     next                                      C00B       E      14       0   .init       
+     loop                                      C019       2       2       0   .init       
+- VARIABLES:
+     Vtext                                     1000      50      80       2   .data       
+     Ctext                                     C030      1E      30       1   .const      
+- LABELS:
+     __SEG_END_SSTACK                          1150       0       0       1               
+MODULE:                 -- toLower.asm.o --
+- PROCEDURES:
+     toLower                                   C01B       2       2       1   .init       
+     loop                                      C01D       E      14       0   .init       
+     next                                      C02B       4       4       0   .init       
+     Ende                                      C02F       1       1       0   .init       
+- VARIABLES:
+
+*********************************************************************************************
+MODULE STATISTIC
+  Name                                      Data   Code  Const
+---------------------------------------------------------------------------------------------
+  main.asm.o                                  80     27     30
+  toLower.asm.o                                0     21      0
+  other                                      256      2      0
+
+*********************************************************************************************
+SECTION USE IN OBJECT-ALLOCATION SECTION
+---------------------------------------------------------------------------------------------
+SECTION: ".data"
+  Vtext 
+SECTION: ".init"
+  main Entry next loop toLower loop next Ende 
+SECTION: ".const"
+  Ctext 
+
+*********************************************************************************************
+OBJECT LIST SORTED BY ADDRESS
+     Name                                      Addr   hSize   dSize     Ref    Section   RLIB
+---------------------------------------------------------------------------------------------
+     Vtext                                     1000      50      80       2   .data       
+     main                                      C000       0       0       0   .init       
+     Entry                                     C000       B      11       0   .init       
+     next                                      C00B       E      14       0   .init       
+     loop                                      C019       2       2       0   .init       
+     toLower                                   C01B       2       2       1   .init       
+     loop                                      C01D       E      14       0   .init       
+     next                                      C02B       4       4       0   .init       
+     Ende                                      C02F       1       1       0   .init       
+     Ctext                                     C030      1E      30       1   .const      
+
+*********************************************************************************************
+UNUSED-OBJECTS SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+COPYDOWN SECTION
+---------------------------------------------------------------------------------------------
+
+*********************************************************************************************
+OBJECT-DEPENDENCIES SECTION
+---------------------------------------------------------------------------------------------
+Entry                     USES __SEG_END_SSTACK Ctext Vtext 
+next                      USES Vtext toLower 
+
+*********************************************************************************************
+DEPENDENCY TREE
+*********************************************************************************************
+ main and _Startup Group
+ | 
+ +- main                
+ |    
+ +- Entry               
+      
+*********************************************************************************************
+STATISTIC SECTION
+---------------------------------------------------------------------------------------------
+
+ExeFile:
+--------
+Number of blocks to be downloaded: 2
+Total size of all blocks to be downloaded: 80
+
