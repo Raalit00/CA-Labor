@@ -12853,21 +12853,19 @@ Entry:
 ;       Load pointer to string in D
 ;       Call subroutine toLower
 
-	;JSR strCpy		; gebe eine Addrese für const string in X und ROM string in Y
-	JSR hexToASCII
-	LDX #Ctext
-	LDY #Vtext	  ;lade Y mit der Addresse von Vtext
+  	LDD #$897F
+  	JSR hexToASCII
 	
-next:	MOVB 0,X,1,Y+    ;bewegt aus x[0] die zeichen in einer folge von Y -1- zeichen reservieren
-	TST 1,X+	 ;testet ob zeichen gleich 0 und addiert 1 zu x
-	BNE next
-
-
-
-
-	LDD #Vtext
-	JSR toLower
-loop:   BRA loop
+    	LDX #Ctext    ; Aufruf strCpy( D=Const string, Y= String)  //Adressen werden übergeben
+    	LDY #Vtext
+    	JSR strCpy
+    	LDD #Vtext     ;Aufruf toLower(D= String)   //Adresse wird übergeben
+    	JSR toLower
+	
+	
+	
+	
+loop: BRA loop
 
 
 
