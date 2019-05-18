@@ -25,12 +25,12 @@ Entry point: 0xC000 (Entry)
 SECTION-ALLOCATION SECTION
 Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
-.init                             67     R     0xC000     0xC042   ROM_C000
+.init                             82     R     0xC000     0xC051   ROM_C000
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .vectSeg0_vect                     2     R     0xFFFE     0xFFFF   .vectSeg0
 
 Summary of section sizes per section type:
-READ_ONLY (R):          45 (dec:       69)
+READ_ONLY (R):          54 (dec:       84)
 READ_WRITE (R/W):      100 (dec:      256)
 
 *********************************************************************************************
@@ -53,17 +53,17 @@ MODULE:                 -- Lab1b.asm.o --
      __SEG_END_SSTACK                          1100       0       0       1               
 MODULE:                 -- Delay.asm.o --
 - PROCEDURES:
-     delay_0_5sec                              C019       3       3       1   .init       
-     BY                                        C01C       3       3       0   .init       
-     BX                                        C01F       7       7       0   .init       
+     delay_0_5sec                              C019       5       5       1   .init       
+     BY                                        C01E       3       3       0   .init       
+     BX                                        C021       9       9       0   .init       
 - VARIABLES:
 MODULE:                 -- Led.asm.o --
 - PROCEDURES:
-     initLED                                   C026       B      11       1   .init       
-     L31                                       C031       2       2       0   .init       
-     setLED                                    C033       8       8       1   .init       
-     getLED                                    C03B       4       4       1   .init       
-     toggleLED                                 C03F       4       4       1   .init       
+     initLED                                   C02A      16      22       1   .init       
+     L31                                       C040       2       2       0   .init       
+     setLED                                    C042       8       8       1   .init       
+     getLED                                    C04A       4       4       1   .init       
+     toggleLED                                 C04E       4       4       1   .init       
 - VARIABLES:
 
 *********************************************************************************************
@@ -71,8 +71,8 @@ MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   Lab1b.asm.o                                  0     25      0
-  Delay.asm.o                                  0     13      0
-  Led.asm.o                                    0     29      0
+  Delay.asm.o                                  0     17      0
+  Led.asm.o                                    0     40      0
   other                                      256      2      0
 
 *********************************************************************************************
@@ -88,14 +88,14 @@ OBJECT LIST SORTED BY ADDRESS
      main                                      C000       0       0       0   .init       
      Entry                                     C000       A      10       0   .init       
      loop                                      C00A       F      15       0   .init       
-     delay_0_5sec                              C019       3       3       1   .init       
-     BY                                        C01C       3       3       0   .init       
-     BX                                        C01F       7       7       0   .init       
-     initLED                                   C026       B      11       1   .init       
-     L31                                       C031       2       2       0   .init       
-     setLED                                    C033       8       8       1   .init       
-     getLED                                    C03B       4       4       1   .init       
-     toggleLED                                 C03F       4       4       1   .init       
+     delay_0_5sec                              C019       5       5       1   .init       
+     BY                                        C01E       3       3       0   .init       
+     BX                                        C021       9       9       0   .init       
+     initLED                                   C02A      16      22       1   .init       
+     L31                                       C040       2       2       0   .init       
+     setLED                                    C042       8       8       1   .init       
+     getLED                                    C04A       4       4       1   .init       
+     toggleLED                                 C04E       4       4       1   .init       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -129,5 +129,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 2
-Total size of all blocks to be downloaded: 69
+Total size of all blocks to be downloaded: 84
 

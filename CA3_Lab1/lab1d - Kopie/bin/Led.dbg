@@ -12812,8 +12812,12 @@ mNVFSEC_KEYEN:      equ    %10000000
 ; EOF
 
 initLED:
+
+  BSET DDRJ,#2
+  BCLR PTJ,#2
 	MOVB #$FF, DDRB 	;Alle LEDs als Ausgänge
 	MOVB #$FF, PORTB	;Schalte alle LED aus
+	CLR DDRH
 	
 	RTS
 	

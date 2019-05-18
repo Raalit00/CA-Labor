@@ -13,7 +13,7 @@ initLED:
   BCLR PTJ,#2
 	MOVB #$FF, DDRB 	;Alle LEDs als Ausgänge
 	MOVB #$FF, PORTB	;Schalte alle LED aus
-	CLR _DDRH
+	CLR DDRH
 	
 	RTS
 	
