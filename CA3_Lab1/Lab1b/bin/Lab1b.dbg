@@ -16,7 +16,8 @@
 
 ; import symbols
         XREF __SEG_END_SSTACK           ; End of stack
-        XREF Delay
+        XREF delay_0_5sec
+        XREF initLED , setLED , getLED, toggleLED
 
 ; include derivative specific macros
         INCLUDE 'mc9s12dp256.inc'
@@ -12831,31 +12832,27 @@ mNVFSEC_KEYEN:      equ    %10000000
 .data: SECTION
 
 ; ROM: Constant data
-.const:SECTION
+.const:SECTION		;code funktioniert ohne das hier
 
 ; ROM: Code section
-.init: SECTION
+.init: SECTION		;muss min einmal definiert sein	
 
 main:                                   ; Begin of the program
 Entry:
         LDS  #__SEG_END_SSTACK          ; Initialize stack pointer
         CLI                             ; Enable interrupts, needed for debugger
-
+	
 ;       ... ??? ...                     ; Add your code here
-	  	MOVB #$FF, DDRB 					;Port 7 bis 0 als ausgang
-L31:	LDAA #31
+	JSR initLED			 ;Port 7 bis 0 als ausgang
+
 		
-	;	MOVB #31, PORTB
-		
+		LDAB #31		
 		
 loop: 	
- 		 DECA                   ; Decrement Regst A
- 		 COMA							   	;Invertiere Reg A
-		 STAA PORTB						;store y in port
-		 COMA                  ;Invertiere Reg 
-	     BEQ L31							;jump to L31 wenn Zero flag=0
-	  	
-	  	JSR Delay            ;Spring zu subroutine 
+	  	JSR setLED
+	  	JSR getLED  		;nur zu test zwecken ob getLED funktioniert (verändert nichts)
+	  	JSR toggleLED
+	  	JSR delay_0_5sec            ;Spring zu subroutine 
 	  	BRA loop
 	  	
 	  	
