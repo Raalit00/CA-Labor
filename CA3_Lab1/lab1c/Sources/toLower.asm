@@ -58,7 +58,7 @@ ende:
  
 
  	;LDX #Cstr
- ;	LDY #str
+ ;	LDY #str        X->Y
  ;@ für string copy müssen zwei Pointer übergeben werden Const string auf Reg.X und und RAM string auf Y
 strCpy: 	
 LP:	     MOVB 0,X,1,Y+      ;bewegt aus x[0] die zeichen in einer folge von Y -1- zeichen reservieren

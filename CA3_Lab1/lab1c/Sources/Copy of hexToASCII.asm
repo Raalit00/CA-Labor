@@ -1,6 +1,9 @@
 
 	XDEF hexToASCII	
 	 XREF __SEG_END_SSTACK
+	 
+	  XREF toLower, strCpy
+	  
  ;RAM: Variable data section
 .data: SECTION
 
@@ -19,6 +22,7 @@ H2A:  DC.B  "0123456789ABCDEF", 0;const char[]="123..F"
 hexToASCII:
   
   PSHY
+  PSHX
   
 	;LDD #$1F24        ;die kommentare wurden geführt bei var =1F24
 	MOVB #$0000,zahl+4 		;end of string -> Zahl[4]=0
@@ -64,7 +68,16 @@ hexToASCII:
   EXG D,Y             ;D =XXXX , Y='0 1 2 3 4<- 5 6 7 8 9 A B C D E F'
   LDX #zahl
   MOVB Y,X  
-  PULY          
+ 
+  
+  LDY #zahl            ;jetzt versuche ich strCpy zum von Außen gegebenen Str
+  PULX                 ;Da strCpy(X=Const String -> Y = string)
+  EXG X,Y              ;
+  JSR strCpy           ;zahl -> string
+                       ;
+  PULY
+  
+            
   RTS
   
   

@@ -27,7 +27,7 @@
 ; RAM: Variable data section
 .data:  SECTION
 Vtext:  DS.B    80                      ; Hier soll der String gespeichert werden
-
+string:  ds.b 7
 
 ; ROM: Constant data
 .const: SECTION
@@ -50,6 +50,7 @@ Entry:
 ;       Call subroutine toLower
 
   	LDD #$897F
+  	LDX #string
   	JSR hexToASCII
 	
     	LDX #Ctext    ; Aufruf strCpy( D=Const string, Y= String)  //Adressen werden übergeben

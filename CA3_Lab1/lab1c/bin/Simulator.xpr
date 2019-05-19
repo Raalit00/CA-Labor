@@ -1,1 +1,2 @@
 Data < ADDXPR ONLY_ADD_IF_NEW "Vtext"
+Data < ADDXPR ONLY_ADD_IF_NEW "string"
